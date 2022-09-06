@@ -8,7 +8,15 @@ export default function App() {
   return (
     <Fragment>
       <StatusBar style="auto" />
-      <MainScreen />
+      <View style={styles.screen}>
+        <MainScreen />
+      </View>
     </Fragment>
   )
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
+})
