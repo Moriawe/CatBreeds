@@ -1,22 +1,19 @@
-import { View, Text, StyleSheet, Button } from "react-native"
-import BackgroundScreen from "../components/BackgroundScreen"
+import { View, Text, StyleSheet } from "react-native"
 import GreyButton from "../components/GreyButton"
 
 const MainScreen = () => {
   return (
-    <BackgroundScreen>
-      <View style={styles.screen}>
-        <Text style={styles.title}>The world's catbreeds</Text>
-        <View style={styles.buttonContainer}>
-          <GreyButton>Kategori 1</GreyButton>
-          <GreyButton>Kategori 2</GreyButton>
-        </View>
-        <View style={styles.buttonContainer}>
-          <GreyButton>Kategori 3</GreyButton>
-          <GreyButton>Kategori 4</GreyButton>
-        </View>
+    <View>
+      <Text style={styles.text}>The world's catbreeds</Text>
+      <View style={styles.buttonContainer}>
+        <GreyButton>Kategori 1</GreyButton>
+        <GreyButton>Kategori 2</GreyButton>
       </View>
-    </BackgroundScreen>
+      <View style={styles.buttonContainer}>
+        <GreyButton>Kategori 3</GreyButton>
+        <GreyButton>Kategori 4</GreyButton>
+      </View>
+    </View>
   )
 }
 
@@ -26,12 +23,16 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
-  title: {
-    marginHorizontal: 40,
-    marginVertical: 20,
-  },
   buttonContainer: {
     flexDirection: "row",
     marginHorizontal: 30,
+  },
+  text: {
+    color: "white",
+    fontSize: 42,
+    lineHeight: 84,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000c0",
   },
 })

@@ -1,25 +1,26 @@
-import { StyleSheet, ImageBackground } from "react-native"
+import { ImageBackground, StyleSheet, View } from "react-native"
 
-const BackgroundScreen = ({ children }) => {
-  return (
+const BackgroundScreen = ({ children }) => (
+  <View style={styles.container}>
     <ImageBackground
-      styles={styles.screen}
       source={require("../../assets/images/cover-cat.jpg")}
       resizeMode="cover"
-      imageStyle={styles.backgroundImage}
+      style={styles.image}
     >
       {children}
     </ImageBackground>
-  )
-}
-
-export default BackgroundScreen
+  </View>
+)
 
 const styles = StyleSheet.create({
-  screen: {
+  container: {
     flex: 1,
   },
-  backgroundImage: {
+  image: {
+    flex: 1,
     opacity: 0.4,
+    justifyContent: "center",
   },
 })
+
+export default BackgroundScreen
