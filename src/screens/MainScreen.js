@@ -1,19 +1,35 @@
 import { View, Text, StyleSheet } from "react-native"
 import GreyButton from "../components/GreyButton"
+import BackgroundScreen from "../components/BackgroundScreen"
 
-const MainScreen = () => {
+const MainScreen = ({ navigation }) => {
+  const onButtonPressed = (kategori) => {
+    console.log("Du klickade på knappen för " + kategori)
+    navigation.navigate(kategori)
+  }
+
   return (
-    <View>
-      <Text style={styles.text}>The world's catbreeds</Text>
-      <View style={styles.buttonContainer}>
-        <GreyButton>Kategori 1</GreyButton>
-        <GreyButton>Kategori 2</GreyButton>
+    <BackgroundScreen>
+      <View>
+        <Text style={styles.title}>The world's catbreeds</Text>
+        <View style={styles.buttonContainer}>
+          <GreyButton onPressed={() => onButtonPressed("kat1")}>
+            Kategori 1
+          </GreyButton>
+          <GreyButton onPressed={() => onButtonPressed("kat2")}>
+            Kategori 2
+          </GreyButton>
+        </View>
+        <View style={styles.buttonContainer}>
+          <GreyButton onPressed={() => onButtonPressed("kat3")}>
+            Kategori 3
+          </GreyButton>
+          <GreyButton onPressed={() => onButtonPressed("kat4")}>
+            Kategori 4
+          </GreyButton>
+        </View>
       </View>
-      <View style={styles.buttonContainer}>
-        <GreyButton>Kategori 3</GreyButton>
-        <GreyButton>Kategori 4</GreyButton>
-      </View>
-    </View>
+    </BackgroundScreen>
   )
 }
 
@@ -22,17 +38,19 @@ export default MainScreen
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    color: "white",
+    fontSize: 42,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000",
+    marginBottom: 20,
   },
   buttonContainer: {
     flexDirection: "row",
-    marginHorizontal: 30,
-  },
-  text: {
-    color: "white",
-    fontSize: 42,
-    lineHeight: 84,
-    fontWeight: "bold",
-    textAlign: "center",
-    backgroundColor: "#000000c0",
+    marginHorizontal: 20,
   },
 })

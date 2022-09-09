@@ -1,9 +1,9 @@
 import { View, Text, Pressable, StyleSheet } from "react-native"
 
-const GreyButton = ({ children }) => {
+const GreyButton = ({ children, onPressed }) => {
   return (
     <View style={styles.button}>
-      <Pressable>
+      <Pressable onPress={onPressed}>
         <Text style={styles.buttonText}>{children}</Text>
       </Pressable>
     </View>
@@ -16,11 +16,13 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     backgroundColor: "#333333",
-    marginHorizontal: 3,
-    marginVertical: 3,
+    borderRadius: 10,
+    marginHorizontal: 5,
+    marginVertical: 5,
   },
   buttonText: {
     color: "#ffffff",
+    textAlign: "center",
     paddingHorizontal: 5,
     paddingVertical: 5,
   },
