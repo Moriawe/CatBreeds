@@ -1,7 +1,7 @@
-import { NavigationContainer, StackActions } from "@react-navigation/native"
+import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { Fragment } from "react"
+import { Fragment, useContext } from "react"
 
 import { Ionicons, AntDesign } from "@expo/vector-icons"
 
@@ -12,7 +12,7 @@ import CategoryThreeScreen from "./src/screens/CategoryThreeScreen"
 import CategoryFourScreen from "./src/screens/CategoryFourScreen"
 import CatBreedInfoScreen from "./src/screens/CatBreedInfoScreen"
 import UserScreen from "./src/screens/UserScreen"
-import UserContextProvider from "./data/userContext"
+import UserContextProvider, { UserContext } from "./data/UserContext"
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -49,49 +49,51 @@ const TabNavigator = () => {
 }
 
 export default function App() {
-  const screen = <MainScreen />
+  const user = useContext(UserContext)
 
   return (
     <Fragment>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Tab"
-            component={TabNavigator}
-            options={{ headerShown: false, title: "Start" }}
-          />
-          <Stack.Screen
-            name="home"
-            component={MainScreen}
-            options={{ title: "Home" }}
-          />
-          <Stack.Screen
-            name="kat1"
-            component={CategoryOneScreen}
-            options={{ title: "Kategori 1" }}
-          />
-          <Stack.Screen
-            name="kat2"
-            component={CategoryTwoScreen}
-            options={{ title: "Kategori 2" }}
-          />
-          <Stack.Screen
-            name="kat3"
-            component={CategoryThreeScreen}
-            options={{ title: "Kategori 3" }}
-          />
-          <Stack.Screen
-            name="kat4"
-            component={CategoryFourScreen}
-            options={{ title: "Kategori 4" }}
-          />
-          <Stack.Screen
-            name="catbreedinfo"
-            component={CatBreedInfoScreen}
-            options={{ title: "Breed details" }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <UserContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Tab"
+              component={TabNavigator}
+              options={{ headerShown: false, title: "Start" }}
+            />
+            <Stack.Screen
+              name="home"
+              component={MainScreen}
+              options={{ title: "Home" + user.user }}
+            />
+            <Stack.Screen
+              name="kat1"
+              component={CategoryOneScreen}
+              options={{ title: "Kategori 1" }}
+            />
+            <Stack.Screen
+              name="kat2"
+              component={CategoryTwoScreen}
+              options={{ title: "Kategori 2" }}
+            />
+            <Stack.Screen
+              name="kat3"
+              component={CategoryThreeScreen}
+              options={{ title: "Kategori 3" }}
+            />
+            <Stack.Screen
+              name="kat4"
+              component={CategoryFourScreen}
+              options={{ title: "Kategori 4" }}
+            />
+            <Stack.Screen
+              name="catbreedinfo"
+              component={CatBreedInfoScreen}
+              options={{ title: "Breed details" }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </UserContextProvider>
     </Fragment>
   )
 }

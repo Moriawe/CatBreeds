@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native"
-import GreyButton from "../components/GreyButton"
+import GreyButton from "../components/ui/GreyButton"
 import BackgroundScreen from "../components/BackgroundScreen"
 
 const MainScreen = ({ navigation }) => {
@@ -10,24 +10,22 @@ const MainScreen = ({ navigation }) => {
 
   return (
     <BackgroundScreen>
-      <View>
-        <Text style={styles.title}>The world's catbreeds</Text>
-        <View style={styles.buttonContainer}>
-          <GreyButton onPressed={() => onButtonPressed("kat1")}>
-            Kategori 1
-          </GreyButton>
-          <GreyButton onPressed={() => onButtonPressed("kat2")}>
-            Kategori 2
-          </GreyButton>
-        </View>
-        <View style={styles.buttonContainer}>
-          <GreyButton onPressed={() => onButtonPressed("kat3")}>
-            Kategori 3
-          </GreyButton>
-          <GreyButton onPressed={() => onButtonPressed("kat4")}>
-            Kategori 4
-          </GreyButton>
-        </View>
+      <Text style={styles.title}>The world's catbreeds</Text>
+      <View style={styles.buttonContainer}>
+        <GreyButton onPressed={() => onButtonPressed("kat1")}>
+          Kategori 1
+        </GreyButton>
+        <GreyButton onPressed={() => onButtonPressed("kat2")}>
+          Kategori 2
+        </GreyButton>
+      </View>
+      <View style={styles.buttonContainer}>
+        <GreyButton onPressed={() => onButtonPressed("kat3")}>
+          Kategori 3
+        </GreyButton>
+        <GreyButton onPressed={() => onButtonPressed("kat4")}>
+          Kategori 4
+        </GreyButton>
       </View>
     </BackgroundScreen>
   )
@@ -36,11 +34,6 @@ const MainScreen = ({ navigation }) => {
 export default MainScreen
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   title: {
     color: "white",
     fontSize: 42,

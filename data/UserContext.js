@@ -1,32 +1,37 @@
 import { createContext, useState } from "react"
 
-const UserContext = createContext({
-  user: "Josh",
+export const UserContext = createContext({
   isLoggedIn: false,
-  cats: [],
-  addCat: (name) => {},
-  removeCat: (name) => {},
+  user: "",
+  changeUser: () => {},
+  loggIn: () => {},
+  loggOut: () => {},
 })
 
 const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState("Josh")
-  const [isLoggedIn, setLoggedIn] = useState("false")
-  const [cats, setCats] = useState([])
+  const [isLoggedIn, setLoggedIn] = useState(false)
+  const [user, setUser] = useState("")
 
-  function addCat(name) {
-    setCats((currentItems) => [...currentItems, name])
+  function changeUser(userName) {
+    setUser = userName
   }
 
-  function removeCat(name) {
-    setCats((currentItems) => currentItems.filter((item) => item !== name))
+  function loggIn(user) {
+    setLoggedIn(true)
+    setUser(user)
+  }
+
+  function loggOut() {
+    setLoggedIn(false)
+    setUser("")
   }
 
   const config = {
-    user: user,
     isLoggedIn: isLoggedIn,
-    cats: cats,
-    add: addCat,
-    remove: removeCat,
+    loggIn: loggIn,
+    loggOut: loggOut,
+    user: user,
+    changeUser: changeUser,
   }
 
   return <UserContext.Provider value={config}>{children}</UserContext.Provider>
