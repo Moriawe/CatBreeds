@@ -3,35 +3,39 @@ import { createContext, useState } from "react"
 export const UserContext = createContext({
   isLoggedIn: false,
   user: "",
-  changeUser: () => {},
-  loggIn: () => {},
-  loggOut: () => {},
+  login: () => {},
+  logout: () => {},
+  userPhoto: "",
+  changePhoto: () => {},
 })
 
 const UserContextProvider = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState("")
+  const [userPhoto, setUserPhoto] = useState("")
 
-  function changeUser(userName) {
-    setUser = userName
-  }
-
-  function loggIn(user) {
+  function login(user) {
     setLoggedIn(true)
     setUser(user)
   }
 
-  function loggOut() {
+  function logout() {
     setLoggedIn(false)
     setUser("")
   }
 
+  function changePhoto(photo) {
+    setUserPhoto(photo)
+    console.log()
+  }
+
   const config = {
     isLoggedIn: isLoggedIn,
-    loggIn: loggIn,
-    loggOut: loggOut,
+    login: login,
+    logout: logout,
     user: user,
-    changeUser: changeUser,
+    userPhoto: userPhoto,
+    changePhoto: changePhoto,
   }
 
   return <UserContext.Provider value={config}>{children}</UserContext.Provider>

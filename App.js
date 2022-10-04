@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { Fragment, useContext } from "react"
 
 import { Ionicons, AntDesign } from "@expo/vector-icons"
+import UserContextProvider, { UserContext } from "./data/UserContext"
 
 import MainScreen from "./src/screens/MainScreen"
 import CategoryOneScreen from "./src/screens/CategoryOneScreen"
@@ -12,10 +13,14 @@ import CategoryThreeScreen from "./src/screens/CategoryThreeScreen"
 import CategoryFourScreen from "./src/screens/CategoryFourScreen"
 import CatBreedInfoScreen from "./src/screens/CatBreedInfoScreen"
 import UserScreen from "./src/screens/UserScreen"
-import UserContextProvider, { UserContext } from "./data/UserContext"
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
+// const user = useContext(UserContext)
+
+// const customUserIcon = user.isLoggedIn
+//   ? () => <Image style={styles.icon} source={{ uri: image }} />
+//   : ({ color, size }) => <AntDesign name="user" size={size} color={color} />
 
 const TabNavigator = () => {
   return (
@@ -49,8 +54,6 @@ const TabNavigator = () => {
 }
 
 export default function App() {
-  const user = useContext(UserContext)
-
   return (
     <Fragment>
       <UserContextProvider>
@@ -64,7 +67,7 @@ export default function App() {
             <Stack.Screen
               name="home"
               component={MainScreen}
-              options={{ title: "Home" + user.user }}
+              options={{ title: "Home" }}
             />
             <Stack.Screen
               name="kat1"

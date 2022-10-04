@@ -1,25 +1,24 @@
-import { Text, View, StyleSheet, TextInput, Button } from "react-native"
+import { Text, View, StyleSheet, TextInput } from "react-native"
 import { UserContext } from "../../data/UserContext"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import GreyButton from "../components/ui/GreyButton"
 import BackgroundScreen from "../components/BackgroundScreen"
+import Camera from "../components/Camera"
 
 const UserScreen = () => {
   const user = useContext(UserContext)
-  //console.log(user)
 
   const [userName, setUserName] = useState("")
   const [password, setPassword] = useState("")
 
   function onLogin() {
-    //console.log("You are logging in")
     if (userName.trim().length === 0 || password.trim().length === 0) {
       Alert.alert("Loggin Error", "Please fill in your username and password", [
         { text: "OK", style: "default", onPress: onReset },
       ])
       return
     }
-    user.loggIn(userName)
+    user.login(userName)
   }
 
   function onReset() {
@@ -31,14 +30,13 @@ const UserScreen = () => {
     console.log("You are creating a new account")
   }
 
-  useEffect(() => {
-    console.log(user.userName)
-  }, [])
-
   return (
     <BackgroundScreen>
       {user.isLoggedIn ? (
-        <Text style={styles.loginText}>{"Välkommen " + user.user} </Text>
+        <View>
+          <Text style={styles.loginText}>{"Välkommen " + user.user} </Text>
+          <Camera />
+        </View>
       ) : (
         <View style={styles.inputContainer}>
           <Text style={styles.loginText}>Please log in</Text>

@@ -16,7 +16,7 @@ const CategoryFourScreen = ({ navigation }) => {
 
   return (
     <View>
-      <Text style={styles.title}>Kategori 1</Text>
+      <Text style={styles.title}>Kategori 4</Text>
       <FlatList
         data={CATEGORY_FOUR}
         numColumns={1}
