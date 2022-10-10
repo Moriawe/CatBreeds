@@ -4,7 +4,7 @@ import BackgroundScreen from "../components/BackgroundScreen"
 
 const MainScreen = ({ navigation }) => {
   const onButtonPressed = (kategori) => {
-    console.log("Du klickade på knappen för " + kategori)
+    //console.log("Du klickade på knappen för " + kategori)
     navigation.navigate(kategori)
   }
 

@@ -5,7 +5,8 @@ const BackgroundScreen = ({ children }) => (
     <ImageBackground
       source={require("../../assets/images/cover-cat.jpg")}
       resizeMode="cover"
-      style={styles.image}
+      style={styles.screen}
+      imageStyle={styles.image}
     >
       {children}
     </ImageBackground>
@@ -16,10 +17,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  image: {
+  screen: {
     flex: 1,
-    opacity: 0.4,
     justifyContent: "center",
+  },
+  image: {
+    opacity: 0.4,
   },
 })
 

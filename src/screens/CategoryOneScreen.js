@@ -10,20 +10,22 @@ import { CATEGORY_ONE } from "../../data/CategoriesData"
 
 const CategoryOneScreen = ({ navigation }) => {
   const onChosenBreed = (breed) => {
-    console.log("Du klickade på knappen för " + breed)
+    //console.log("Du klickade på knappen för " + breed)
     navigation.navigate("catbreedinfo", { breedName: breed })
   }
 
   return (
-    <View>
+    <View style={styles.box}>
       <Text style={styles.title}>Kategori 1</Text>
       <FlatList
         data={CATEGORY_ONE}
         numColumns={1}
+        contentContainerStyle={{ paddingBottom: 20 }}
+        ListFooterComponent={<View style={{ margin: 50 }} />}
         renderItem={(itemData) => {
           return (
             <Pressable onPress={() => onChosenBreed(itemData.item.breed)}>
-              <View>
+              <View style={styles.box}>
                 <Image
                   style={styles.breedImage}
                   source={{ uri: itemData.item.image }}
@@ -43,6 +45,9 @@ const CategoryOneScreen = ({ navigation }) => {
 export default CategoryOneScreen
 
 const styles = StyleSheet.create({
+  box: {
+    flex: 1,
+  },
   title: {
     color: "white",
     fontSize: 42,

@@ -1,7 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { Fragment, useContext } from "react"
+import { Fragment, useContext, useState } from "react"
+import * as ScreenOrientation from "expo-screen-orientation"
 
 import { Ionicons, AntDesign } from "@expo/vector-icons"
 import UserContextProvider, { UserContext } from "./data/UserContext"
@@ -16,6 +17,7 @@ import UserScreen from "./src/screens/UserScreen"
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
+
 // const user = useContext(UserContext)
 
 // const customUserIcon = user.isLoggedIn
@@ -54,6 +56,8 @@ const TabNavigator = () => {
 }
 
 export default function App() {
+  const [orientationIsLandscape, setOrientation] = useState(true)
+
   return (
     <Fragment>
       <UserContextProvider>
